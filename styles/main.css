@@ -170,6 +170,76 @@ footer .social-icon:hover {
     background-color: #FF3333;
 }
 
+/* Course Cards */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.course-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.course-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.course-card p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.course-card button {
+    display: inline-block;
+    background-color: #FF4B4B;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+.course-card button:hover {
+    background-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 75, 75, 0.2);
+}
+
+.course-card a {
+    text-decoration: none;
+}
+
 /* What's JUJU Section */
 .whats-juju {
     text-align: center;
@@ -370,7 +440,6 @@ footer .social-icon:hover {
     background-color: #EEEEEE;
     border: none;
     color: #666;
-    cursor: not-allowed;
     margin-top: auto;
 }
 
@@ -807,7 +876,6 @@ footer {
     }
 }
 
-/* Hamburger Menu */
 .hamburger-menu {
     display: none;
     background: none;
