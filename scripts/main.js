@@ -1,19 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 料金切り替え機能
     const pricingToggle = document.querySelector('.pricing-toggle');
-    const priceElement = document.querySelector('.price');
     
-    if (pricingToggle && priceElement) {
+    if (pricingToggle) {
         const toggleSpans = pricingToggle.querySelectorAll('span');
         
         toggleSpans.forEach(span => {
-            span.addEventListener('click', () => {
+            span.addEventListener('click', (event) => {
                 // アクティブクラスの切り替え
                 toggleSpans.forEach(s => s.classList.remove('active'));
                 span.classList.add('active');
-                
-                // 料金の更新（両方ともFreeなので、実際の変更は必要ありません）
-                priceElement.textContent = 'Free';
                 
                 // クリック時のリップルエフェクト
                 const ripple = document.createElement('span');
@@ -103,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.feature, .course-card, .community-feature').forEach(el => {
+    document.querySelectorAll('.feature, .course-card, .community-feature, .pricing-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'all 0.5s ease-out';
