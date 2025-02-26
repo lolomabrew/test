@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 料金切り替え機能
-    const pricingToggle = document.querySelector('.pricing-toggle');
+    const pricingToggle = document.querySelector('.membership .pricing-toggle');
     
     if (pricingToggle) {
         const toggleSpans = pricingToggle.querySelectorAll('span');
@@ -10,6 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 // アクティブクラスの切り替え
                 toggleSpans.forEach(s => s.classList.remove('active'));
                 span.classList.add('active');
+                
+                // プランの切り替え
+                const planType = span.getAttribute('data-plan');
+                const planContainers = document.querySelectorAll('.pricing-cards-container');
+                
+                planContainers.forEach(container => {
+                    if (container.classList.contains('free')) return; // 無料プランは常に表示
+                    
+                    container.classList.remove('active');
+                    if (container.classList.contains(planType)) {
+                        container.classList.add('active');
+                    }
+                });
                 
                 // クリック時のリップルエフェクト
                 const ripple = document.createElement('span');
@@ -93,17 +106,54 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transform = entry.target.classList.contains('premium') 
+                    ? 'scale(1.05) translateY(0)' 
+                    : 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.feature, .course-card, .community-feature, .pricing-card').forEach(el => {
+    document.querySelectorAll('.feature, .pricing-card, .community-feature').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
+        el.style.transform = el.classList.contains('premium') 
+            ? 'scale(1.05) translateY(20px)' 
+            : 'translateY(20px)';
         el.style.transition = 'all 0.5s ease-out';
         observer.observe(el);
+    });
+
+    // 料金カードのアニメーション
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    pricingCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
+
+    // プレミアムカードのハイライト効果
+    const premiumCards = document.querySelectorAll('.pricing-card.premium');
+    premiumCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.08) translateY(5px)';
+            card.style.boxShadow = '0 20px 40px rgba(255, 75, 75, 0.2)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1.05) translateY(10px)';
+            card.style.boxShadow = '0 15px 30px rgba(255, 75, 75, 0.1)';
+        });
+    });
+
+    // 特典リストのアニメーション
+    const benefitItems = document.querySelectorAll('.pricing-card .includes ul li');
+    benefitItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.4s ease-out';
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        }, 600 + (index * 100));
     });
 
     // Hero画像のスプリングアニメーション
@@ -161,38 +211,4 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('active');
         }
     });
-
-    // メンバーシップカードのアニメーション
-    const pricingCard = document.querySelector('.pricing-card');
-    if (pricingCard) {
-        // 初期表示アニメーション
-        pricingCard.style.opacity = '0';
-        pricingCard.style.transform = 'translateY(20px)';
-        
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    pricingCard.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                    pricingCard.style.opacity = '1';
-                    pricingCard.style.transform = 'translateY(0)';
-                    cardObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        cardObserver.observe(pricingCard);
-
-        // 特典リストのアニメーション
-        const benefitItems = pricingCard.querySelectorAll('.includes ul li');
-        benefitItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(-20px)';
-            
-            setTimeout(() => {
-                item.style.transition = 'all 0.4s ease-out';
-                item.style.opacity = '1';
-                item.style.transform = 'translateX(0)';
-            }, 600 + (index * 100));
-        });
-    }
 }); 

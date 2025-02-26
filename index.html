@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUJU - Japanese Language School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <base href="/test/">
     <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/main.js" defer></script>
 </head>
@@ -66,7 +65,7 @@
                 </div>
                 <div class="fun-learning-content">
                     <h2>Struggling to Study?<br>
-                        <span>Let’s Make It Fun!</span></h2>
+                        <span>Let's Make It Fun!</span></h2>
                     <div class="features">
                         <div class="feature">
                             <h3>Engaging Lessons</h3>
@@ -90,46 +89,168 @@
                 <h2 id="courses">Learning Courses</h2>
             </div>
             <div class="course-grid">
-                <div class="course-card premium-card">
-                    <img src="images/group-lessons.jpg" alt="JUJU Premium School">
-                    <h3>JUJU Premium School</h3>
-                    <p>Unlimited access<br>JUJU Community</p>
-                    <a href="https://juju-school.teachable.com/purchase?product_id=6096559" target="_blank" rel="noopener noreferrer" class="button-buy">Buy Now</a>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/group-lessons.jpg" alt="JUJU Premium">
+                    </div>
+                    <div class="course-content">
+                        <h3>JUJU Premium</h3>
+                        <p>Unlimited access<br>
+                            JUJU Community</p>
+                        <a href="https://juju-school.teachable.com/purchase?product_id=6096559" target="_blank" rel="noopener noreferrer" class="button-buy">Buy Now</a>
+                    </div>
                 </div>
                 
                 <div class="course-card">
-                    <img src="images/hiragana-course.jpg" alt="Hiragana Course">
-                    <h3>Hiragana Course</h3>
-                    <p>Master reading and writing Hiragana<br> from the basics. Learn with fun<br> and master it with confidence!</p>
-                    <a href="https://juju-school.teachable.com/purchase?product_id=6096559" target="_blank" rel="noopener noreferrer" class="button-buy">Buy Now</a>
+                    <div class="course-image">
+                        <img src="images/hiragana-course.jpg" alt="Hiragana Course">
+                    </div>
+                    <div class="course-content">
+                        <h3>Hiragana Course</h3>
+                        <p>Master reading and writing Hiragana from the basics.<br>
+                            Learn with fun and master it with confidence!</p>
+                        <a href="http://juju-school.teachable.com/purchase?product_id=6107812" target="_blank" rel="noopener noreferrer" class="button-buy">Buy Now</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="membership">
             <h2>Become a JUJU member !!</h2>
+            
             <div class="pricing-toggle">
-                <span class="active" data-plan="monthly">Monthly</span>
-                <span data-plan="yearly">Yearly</span>
+                <span class="active" data-plan="monthly">Monthly Plan</span>
+                <span data-plan="yearly">Yearly Plan</span>
             </div>
-            <div class="pricing-card">
-                <div class="pricing-card-main">
-                    <h3>JUJU Community</h3>
-                    <div class="price">Free</div>
-                    <p>Join the JUJU community with our easy-to-start free plan!</p>
-                    <a href="https://sso.teachable.com/secure/2341410/identity/sign_up/otp" target="_blank" rel="noopener noreferrer">
-                        <button class="join-button">Join Now (FREE)</button>
-                    </a>
+            
+            <div class="pricing-cards">
+                <div class="pricing-cards-container monthly active">
+                    <div class="pricing-card">
+                        <div class="pricing-card-main">
+                            <h3>JUJU Premium</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">49</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p>For those who want to master Japanese comprehensively</p>
+                            <a href="https://juju-school.teachable.com/purchase?product_id=6096559" target="_blank" rel="noopener noreferrer">
+                                <button class="join-button">Subscribe Now</button>
+                            </a>
+                        </div>
+                        <div class="includes">
+                            <h4>Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> All Japanese lessons</li>
+                                <li><i class="fas fa-check"></i> Weekly group lessons</li>
+                                <li><i class="fas fa-check"></i> Detailed learning analytics</li>
+                                <li><i class="fas fa-check"></i> VIP community access</li>
+                                <li><i class="fas fa-check"></i> Monthly private lessons</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-card-main">
+                            <h3>Hiragana Course</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">10</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <p>Perfect for beginners looking to master Hiragana</p>
+                            <a href="http://juju-school.teachable.com/purchase?product_id=6107812" target="_blank" rel="noopener noreferrer">
+                                <button class="join-button">Subscribe Now</button>
+                            </a>
+                        </div>
+                        <div class="includes">
+                            <h4>Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Complete Hiragana lessons</li>
+                                <li><i class="fas fa-check"></i> Practice exercises</li>
+                                <li><i class="fas fa-check"></i> Progress tracking</li>
+                                <li><i class="fas fa-check"></i> Community access</li>
+                                <li><i class="fas fa-check"></i> Learning resources</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="includes">
-                    <h4>Benefits</h4>
-                    <ul>
-                        <li>Access to JUJU Community</li>
-                        <li>Use of Basic Learning Resources</li>
-                        <li>Interaction with Community Members</li>
-                        <li>Participation in Free Events</li>
-                        <li>Track Your Learning Progress</li>
-                    </ul>
+                
+                <div class="pricing-cards-container yearly">
+                    <div class="pricing-card">
+                        <div class="pricing-card-main">
+                            <h3>JUJU Premium</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">100</span>
+                                <span class="period">/year</span>
+                            </div>
+                            <div class="savings">Save over 80%!</div>
+                            <p>For those who want to master Japanese comprehensively</p>
+                            <a href="https://juju-school.teachable.com/purchase?product_id=6096559" target="_blank" rel="noopener noreferrer">
+                                <button class="join-button">Subscribe Now</button>
+                            </a>
+                        </div>
+                        <div class="includes">
+                            <h4>Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> All Japanese lessons</li>
+                                <li><i class="fas fa-check"></i> Weekly group lessons</li>
+                                <li><i class="fas fa-check"></i> Detailed learning analytics</li>
+                                <li><i class="fas fa-check"></i> VIP community access</li>
+                                <li><i class="fas fa-check"></i> Monthly private lessons</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-card-main">
+                            <h3>Hiragana Course</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">50</span>
+                                <span class="period">/year</span>
+                            </div>
+                            <div class="savings">Save over 50%!</div>
+                            <p>Perfect for beginners looking to master Hiragana</p>
+                            <a href="http://juju-school.teachable.com/purchase?product_id=6107812" target="_blank" rel="noopener noreferrer">
+                                <button class="join-button">Subscribe Now</button>
+                            </a>
+                        </div>
+                        <div class="includes">
+                            <h4>Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Complete Hiragana lessons</li>
+                                <li><i class="fas fa-check"></i> Practice exercises</li>
+                                <li><i class="fas fa-check"></i> Progress tracking</li>
+                                <li><i class="fas fa-check"></i> Community access</li>
+                                <li><i class="fas fa-check"></i> Learning resources</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pricing-cards-container free">
+                    <div class="pricing-card free-card">
+                        <div class="pricing-card-main">
+                            <h3>JUJU Community</h3>
+                            <div class="price">Free</div>
+                            <p>Join the JUJU community and start your Japanese learning journey!</p>
+                            <a href="https://sso.teachable.com/secure/2341410/identity/sign_up/otp" target="_blank" rel="noopener noreferrer">
+                                <button class="join-button">Join Now (Free)</button>
+                            </a>
+                        </div>
+                        <div class="includes">
+                            <h4>Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Access to JUJU community</li>
+                                <li><i class="fas fa-check"></i> Basic learning resources</li>
+                                <li><i class="fas fa-check"></i> Interact with community members</li>
+                                <li><i class="fas fa-check"></i> Join free events</li>
+                                <li><i class="fas fa-check"></i> Track learning progress</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -157,7 +278,7 @@
                     <div class="footer-section-links1">
                         <li><a href="https://juju-school.teachable.com/p/terms">Terms of Use</a></li>
                         <li><a href="https://juju-school.teachable.com/p/privacy">Privacy Policy</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://sso.teachable.com/secure/2341410/current_user/contact">Contact Us</a></li>
                     </div>
                 </ul>
             </div>
