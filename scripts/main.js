@@ -1,4 +1,231 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 星形装飾要素をランダムに配置する関数
+    function createStarDecorations() {
+        // 星を配置するセクション
+        const sections = document.querySelectorAll('section');
+        
+        // 各セクションに星を追加
+        sections.forEach(section => {
+            // 各セクションに3〜9個の星を追加（さらに数を増やす）
+            const starCount = Math.floor(Math.random() * 7) + 3;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star-decoration';
+                
+                // ランダムなサイズ
+                const sizeClasses = ['star-xs', 'star-sm', 'star-md', 'star-lg', 'star-xl'];
+                const randomSize = sizeClasses[Math.floor(Math.random() * sizeClasses.length)];
+                star.classList.add(randomSize);
+                
+                // サイト内で使用されているカラーに限定
+                const colorClasses = ['star-primary', 'star-primary-light', 'star-secondary', 'star-background'];
+                // 各色の出現確率を調整
+                let randomIndex;
+                const random = Math.random();
+                if (random < 0.35) {
+                    randomIndex = 0; // primary
+                } else if (random < 0.65) {
+                    randomIndex = 1; // primary-light
+                } else if (random < 0.85) {
+                    randomIndex = 2; // secondary
+                } else {
+                    randomIndex = 3; // background
+                }
+                const randomColor = colorClasses[randomIndex];
+                star.classList.add(randomColor);
+                
+                // ランダムなアニメーション
+                const simpleAnimationClasses = [
+                    'star-rotate', 'star-pulse', 'star-twinkle', 
+                    'star-bounce', 'star-path', 'star-shake',
+                    'star-spiral', 'star-zigzag', 'star-float', 'star-swing'
+                ];
+                const complexAnimationClasses = [
+                    'star-complex-1', 'star-complex-2', 
+                    'star-complex-3', 'star-complex-4'
+                ];
+                
+                // 95%の確率でアニメーションを適用（さらに確率を増加）
+                if (Math.random() > 0.05) {
+                    let randomAnimation;
+                    
+                    // 40%の確率で複雑なアニメーションを使用
+                    if (Math.random() < 0.4) {
+                        randomAnimation = complexAnimationClasses[Math.floor(Math.random() * complexAnimationClasses.length)];
+                    } else {
+                        randomAnimation = simpleAnimationClasses[Math.floor(Math.random() * simpleAnimationClasses.length)];
+                    }
+                    
+                    star.classList.add(randomAnimation);
+                    
+                    // ランダムな遅延
+                    const delayClasses = ['star-delay-1', 'star-delay-2', 'star-delay-3', 'star-delay-4', 'star-delay-5'];
+                    const randomDelay = delayClasses[Math.floor(Math.random() * delayClasses.length)];
+                    star.classList.add(randomDelay);
+                    
+                    // 60%の確率でランダムな速度変化を適用
+                    if (Math.random() < 0.6) {
+                        const speedClasses = ['star-speed-1', 'star-speed-2', 'star-speed-3'];
+                        const randomSpeed = speedClasses[Math.floor(Math.random() * speedClasses.length)];
+                        star.classList.add(randomSpeed);
+                    }
+                    
+                    // 30%の確率でアニメーション方向を変更
+                    if (Math.random() < 0.3) {
+                        const directionClasses = ['star-reverse', 'star-alternate'];
+                        const randomDirection = directionClasses[Math.floor(Math.random() * directionClasses.length)];
+                        star.classList.add(randomDirection);
+                    }
+                }
+                
+                // よりランダムな位置（画面全体に均等に分布するよう調整）
+                star.style.position = 'absolute';
+                star.style.left = Math.floor(Math.random() * 98) + 1 + '%';
+                star.style.top = Math.floor(Math.random() * 98) + 1 + '%';
+                
+                // z-indexをランダムに設定（コンテンツの後ろに表示されるように）
+                star.style.zIndex = Math.floor(Math.random() * 3) - 1; // -1, 0, 1の値を取るように
+                
+                // セクションに追加
+                section.style.position = 'relative';
+                section.appendChild(star);
+            }
+        });
+        
+        // 3秒ごとに新しい星を1〜2個ランダムに追加する（頻度を上げる）
+        setInterval(() => {
+            if (sections.length > 0) {
+                // 星を追加する数を決定
+                const starsToAdd = Math.random() < 0.3 ? 2 : 1;
+                
+                for (let i = 0; i < starsToAdd; i++) {
+                    const randomSection = sections[Math.floor(Math.random() * sections.length)];
+                    
+                    const star = document.createElement('div');
+                    star.className = 'star-decoration';
+                    
+                    // ランダムなサイズ（小さめの星が多くなるよう調整）
+                    const sizeClasses = ['star-xs', 'star-xs', 'star-sm', 'star-sm', 'star-md'];
+                    const randomSize = sizeClasses[Math.floor(Math.random() * sizeClasses.length)];
+                    star.classList.add(randomSize);
+                    
+                    // サイト内で使用されているカラーに限定
+                    const colorClasses = ['star-primary', 'star-primary-light', 'star-secondary', 'star-background'];
+                    // 各色の出現確率を調整
+                    let randomIndex;
+                    const random = Math.random();
+                    if (random < 0.35) {
+                        randomIndex = 0; // primary
+                    } else if (random < 0.65) {
+                        randomIndex = 1; // primary-light
+                    } else if (random < 0.85) {
+                        randomIndex = 2; // secondary
+                    } else {
+                        randomIndex = 3; // background
+                    }
+                    const randomColor = colorClasses[randomIndex];
+                    star.classList.add(randomColor);
+                    
+                    // 動的アニメーション（フェードインしてからランダムなアニメーション）
+                    const allAnimations = [
+                        'star-rotate', 'star-pulse', 'star-twinkle', 
+                        'star-bounce', 'star-path', 'star-shake',
+                        'star-spiral', 'star-zigzag', 'star-float', 'star-swing',
+                        'star-complex-1', 'star-complex-2', 'star-complex-3', 'star-complex-4'
+                    ];
+                    
+                    // 複数のアニメーションを組み合わせる可能性も
+                    let animationsToApply = [];
+                    if (Math.random() < 0.25) { // 25%の確率で複数アニメーション
+                        // ランダムに2つ選ぶ
+                        while (animationsToApply.length < 2) {
+                            const randAnim = allAnimations[Math.floor(Math.random() * (allAnimations.length - 4))]; // complexは除外
+                            if (!animationsToApply.includes(randAnim)) {
+                                animationsToApply.push(randAnim);
+                            }
+                        }
+                    } else {
+                        animationsToApply.push(allAnimations[Math.floor(Math.random() * allAnimations.length)]);
+                    }
+                    
+                    // フェードイン効果
+                    star.style.opacity = '0';
+                    star.style.transition = 'opacity 1.5s ease-in-out';
+                    
+                    // ランダムな位置（画面全体に均等に分布するよう調整）
+                    star.style.position = 'absolute';
+                    star.style.left = Math.floor(Math.random() * 98) + 1 + '%';
+                    star.style.top = Math.floor(Math.random() * 98) + 1 + '%';
+                    star.style.zIndex = Math.floor(Math.random() * 3) - 1; // -1, 0, 1の値を取るように
+                    
+                    // セクションに追加
+                    randomSection.appendChild(star);
+                    
+                    // フェードイン後にアニメーションを適用
+                    setTimeout(() => {
+                        star.style.opacity = '0.4'; // 透明度を上げる
+                        setTimeout(() => {
+                            animationsToApply.forEach(anim => {
+                                star.classList.add(anim);
+                            });
+                            
+                            // ランダムな遅延と速度も追加
+                            if (Math.random() > 0.3) {
+                                const delayClasses = ['star-delay-1', 'star-delay-2', 'star-delay-3', 'star-delay-4', 'star-delay-5'];
+                                star.classList.add(delayClasses[Math.floor(Math.random() * delayClasses.length)]);
+                            }
+                            
+                            if (Math.random() > 0.4) {
+                                const speedClasses = ['star-speed-1', 'star-speed-2', 'star-speed-3'];
+                                star.classList.add(speedClasses[Math.floor(Math.random() * speedClasses.length)]);
+                            }
+                        }, 500);
+                    }, 10);
+                    
+                    // 古い星を削除（星の総数を一定に保つ）
+                    const stars = randomSection.querySelectorAll('.star-decoration');
+                    if (stars.length > 15) { // 最大数を増やす
+                        // 複数の古い星を削除
+                        const starsToRemove = Math.min(starsToAdd, stars.length - 12);
+                        for (let j = 0; j < starsToRemove; j++) {
+                            const oldestStar = stars[j];
+                            // フェードアウト効果
+                            oldestStar.style.opacity = '0';
+                            setTimeout(() => {
+                                oldestStar.remove();
+                            }, 1000);
+                        }
+                    }
+                }
+            }
+        }, 3000); // 3秒ごとに実行
+        
+        // マウス移動に応じて星が微妙に動くエフェクト
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            // すべての星に対して微小な動きを与える
+            document.querySelectorAll('.star-decoration').forEach(star => {
+                // すでにアニメーションがある星には適用しない（競合を避ける）
+                if (!star.style.transform || star.style.transform === '') {
+                    const moveX = (mouseX - 0.5) * 5; // -2.5px〜2.5pxの範囲
+                    const moveY = (mouseY - 0.5) * 5;
+                    
+                    // 星によって動きの量を変える
+                    const factor = Math.random() * 0.8 + 0.2; // 0.2〜1.0の範囲
+                    
+                    star.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px)`;
+                    star.style.transition = 'transform 0.5s ease-out';
+                }
+            });
+        });
+    }
+    
+    // ページ読み込み時に星を配置
+    createStarDecorations();
+
     // 料金切り替え機能
     const pricingToggle = document.querySelector('.membership .pricing-toggle');
     
@@ -16,8 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const planContainers = document.querySelectorAll('.pricing-cards-container');
                 
                 planContainers.forEach(container => {
-                    if (container.classList.contains('free')) return; // 無料プランは常に表示
-                    
                     container.classList.remove('active');
                     if (container.classList.contains(planType)) {
                         container.classList.add('active');
