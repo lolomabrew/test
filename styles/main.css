@@ -483,20 +483,51 @@ footer .social-icon:hover {
 .hero-image-wrapper {
     margin: 3rem auto;
     overflow: hidden;
-    max-width: 250px;
+    max-width: 350px;
+    max-height: 350px;
     position: relative;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(62, 199, 247, 0.2);
+    border: 3px solid rgba(62, 199, 247, 0.3);
+}
+
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(62, 199, 247, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hero-image-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(62, 199, 247, 0.15);
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .hero-image-wrapper:hover {
     transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(62, 199, 247, 0.3);
 }
 
 .hero-image {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
 }
 
 .hero p {
@@ -1406,11 +1437,13 @@ footer .social-icon:hover {
     transform: translateY(-2px);
 }
 
-.pricing-card .includes {
+.pricing-card .includes,
+.pricing-card .features-list {
     padding-top: 1rem;
 }
 
-.pricing-card .includes h4 {
+.pricing-card .includes h4,
+.pricing-card .features-list h4 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--secondary-color);
@@ -1418,28 +1451,33 @@ footer .social-icon:hover {
     display: inline-block;
 }
 
-.pricing-card .includes ul {
+.pricing-card .includes ul,
+.pricing-card .features-list ul {
     list-style: none;
     padding: 0;
 }
 
-.pricing-card .includes ul li {
+.pricing-card .includes ul li,
+.pricing-card .features-list ul li {
     margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
 }
 
-.pricing-card .includes ul li i {
+.pricing-card .includes ul li i,
+.pricing-card .features-list ul li i {
     color: var(--primary-color);
     margin-right: 0.8rem;
     font-size: 1rem;
 }
 
-.pricing-card .includes ul li.disabled {
+.pricing-card .includes ul li.disabled,
+.pricing-card .features-list ul li.disabled {
     color: #999;
 }
 
-.pricing-card .includes ul li.disabled i {
+.pricing-card .includes ul li.disabled i,
+.pricing-card .features-list ul li.disabled i {
     color: #ccc;
 }
 
@@ -1465,7 +1503,8 @@ footer .social-icon:hover {
         min-height: 200px;
     }
     
-    .pricing-card .includes h4 {
+    .pricing-card .includes h4,
+    .pricing-card .features-list h4 {
         text-align: center;
         width: 100%;
     }
@@ -1681,7 +1720,8 @@ footer {
         min-height: 200px;
     }
 
-    .pricing-card .includes h4 {
+    .pricing-card .includes h4,
+    .pricing-card .features-list h4 {
         text-align: center;
         width: 100%;
     }
@@ -1749,7 +1789,6 @@ footer {
         flex-direction: column;
         padding: 80px 2rem 2rem;
         transition: right 0.3s ease;
-        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
     }
 
     .nav-links.active {
@@ -1942,4 +1981,173 @@ body {
     font-family: var(--font-family);
     line-height: 1.6;
     color: var(--text-color);
+}
+
+/* ページロード時のアニメーション */
+.page-transition {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ヘッダーアニメーション */
+.header-animation {
+    opacity: 0;
+    animation: slideDown 0.8s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ヒーローセクションアニメーション */
+.hero-animation {
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-in-out 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* スクロールアニメーション用クラス */
+.scroll-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ロゴアニメーション */
+.logo-animation {
+    opacity: 0;
+    animation: zoomIn 0.8s ease-in-out 0.1s forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ナビゲーションリンクアニメーション */
+.nav-links-animation a {
+    opacity: 0;
+    animation: fadeInRight 0.5s ease-in-out forwards;
+}
+
+.nav-links-animation a:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.nav-links-animation .social-links a:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+.nav-links-animation .social-links a:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.nav-links-animation .social-links a:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* CTAボタンアニメーション */
+.cta-animation {
+    opacity: 0;
+    animation: pulse 1.5s ease-in-out 1s forwards;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ローディングオーバーレイ */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 75, 75, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 } 

@@ -1,4 +1,92 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ローディングオーバーレイを作成
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'loading-overlay';
+    const loadingSpinner = document.createElement('div');
+    loadingSpinner.className = 'loading-spinner';
+    loadingOverlay.appendChild(loadingSpinner);
+    document.body.appendChild(loadingOverlay);
+
+    // ページ全体をラップする要素を作成
+    const pageContent = document.createElement('div');
+    pageContent.className = 'page-transition';
+    
+    // body内の全要素をラップする
+    while (document.body.firstChild !== loadingOverlay) {
+        pageContent.appendChild(document.body.firstChild);
+    }
+    document.body.insertBefore(pageContent, loadingOverlay);
+
+    // アニメーションクラスを追加
+    const headerElement = document.querySelector('.header');
+    if (headerElement) {
+        headerElement.classList.add('header-animation');
+    }
+
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.classList.add('logo-animation');
+    }
+
+    const navLinksElement = document.querySelector('.nav-links');
+    if (navLinksElement) {
+        navLinksElement.classList.add('nav-links-animation');
+    }
+
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.classList.add('hero-animation');
+    }
+
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.classList.add('cta-animation');
+    }
+
+    // スクロールアニメーション要素を設定
+    const scrollElements = [
+        ...document.querySelectorAll('.whats-juju'),
+        ...document.querySelectorAll('.fun-learning'),
+        ...document.querySelectorAll('.courses'),
+        ...document.querySelectorAll('.membership'),
+        ...document.querySelectorAll('.hiragana-course-section'),
+        ...document.querySelectorAll('.course-card'),
+        ...document.querySelectorAll('.pricing-card'),
+        ...document.querySelectorAll('.feature')
+    ];
+
+    scrollElements.forEach(element => {
+        element.classList.add('scroll-animation');
+    });
+
+    // スクロール時のアニメーション処理
+    function checkScroll() {
+        scrollElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('visible');
+            }
+        });
+    }
+
+    // ページ読み込み完了時の処理
+    window.addEventListener('load', () => {
+        // ローディングオーバーレイを非表示
+        setTimeout(() => {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(() => {
+                loadingOverlay.remove();
+            }, 500);
+        }, 800);
+
+        // 初期スクロールチェック
+        checkScroll();
+    });
+
+    // スクロールイベントリスナー
+    window.addEventListener('scroll', checkScroll);
+
     // 星形装飾要素をランダムに配置する関数
     function createStarDecorations() {
         // 星を配置するセクション
