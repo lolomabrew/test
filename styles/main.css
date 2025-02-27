@@ -1990,6 +1990,10 @@ footer {
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-family);
     line-height: 1.6;
