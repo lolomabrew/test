@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // メニューリンクをクリックしたときにメニューを閉じる
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    document.querySelectorAll('.nav-links > a, .social-links a').forEach(link => {
         link.addEventListener('click', () => {
             hamburgerMenu.classList.remove('active');
             navLinks.classList.remove('active');
